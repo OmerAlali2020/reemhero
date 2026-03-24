@@ -749,6 +749,7 @@ const GRAVITY = 0.45;
 const JUMP_FORCE = -11;      // slightly higher jump for auto-run
 const PLAYER_SPEED = 4.5;    // faster auto-run
 const SHOOT_COOLDOWN = 280;  // slightly faster shooting
+const TOTAL_LEVELS = 10;
 
 // ── Canvas Setup ──
 const canvas = document.getElementById('gameCanvas');
@@ -1593,9 +1594,9 @@ function buildLevel(num){
       goal:{x:5050,y:gh-TILE*2},
     },
 
-    // ─── LEVEL 5: BOSS - Legacy System ───
+    // ─── LEVEL 5: Pre-Final Gauntlet ───
     {
-      name:'מפגש עם כוח רשע',
+      name:'מבצר הרשע',
       bgColor:'#1a0a0a',
       width:3000,
       ground:{y:gh,h:TILE*2},
@@ -1607,7 +1608,7 @@ function buildLevel(num){
         {x:1400,y:gh-TILE*3,w:TILE*4,h:TILE,type:'solid'},
         {x:1700,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
         {x:2000,y:gh-TILE*4,w:TILE*4,h:TILE,type:'solid'},
-        {x:2300,y:gh-TILE*3,w:TILE*5,h:TILE,type:'solid'}, // boss arena
+        {x:2300,y:gh-TILE*3,w:TILE*5,h:TILE,type:'solid'}, // final stretch
       ],
       enemies:[
         {type:'bug',x:250,y:0,patrolLeft:200,patrolRight:460},
@@ -1615,7 +1616,8 @@ function buildLevel(num){
         {type:'bug',x:850,y:0,patrolLeft:800,patrolRight:1060},
         {type:'server',x:1150,y:0},
         {type:'bug',x:1450,y:0,patrolLeft:1400,patrolRight:1660},
-        {type:'boss',x:2450,y:gh-TILE*10,hp:30}, // LEGACY SYSTEM BOSS
+        {type:'server',x:2050,y:0},
+        {type:'bug',x:2380,y:0,patrolLeft:2300,patrolRight:2580},
       ],
       coins:[
         {x:240,y:gh-TILE*5},{x:270,y:gh-TILE*5},
@@ -1626,7 +1628,262 @@ function buildLevel(num){
       ],
       logs:[{x:560,y:gh-TILE*7},{x:1160,y:gh-TILE*8},{x:1750,y:gh-TILE*7}],
       debugTokens:[{x:1100,y:gh-TILE*8},{x:1700,y:gh-TILE*7},{x:2000,y:gh-TILE*6}],
-      goal:{x:2750,y:gh-TILE*2}, // after boss
+      goal:{x:2750,y:gh-TILE*2}, // stage clear
+    },
+
+    // ─── LEVEL 6: Dark Data Center ───
+    {
+      name:'מרכז הנתונים האפל',
+      bgColor:'#10162b',
+      width:5600,
+      ground:{y:gh,h:TILE*2},
+      platforms:[
+        {x:220,y:gh-TILE*3,w:TILE*3,h:TILE,type:'solid'},
+        {x:470,y:gh-TILE*5,w:TILE*2,h:TILE,type:'moving',dx:2.2,range:130},
+        {x:720,y:gh-TILE*3.5,w:TILE*3,h:TILE,type:'solid'},
+        {x:980,y:gh-TILE*6,w:TILE*2,h:TILE,type:'moving',dx:-2.3,range:150},
+        {x:1260,y:gh-TILE*4,w:TILE*3,h:TILE,type:'solid'},
+        {x:1540,y:gh-TILE*7,w:TILE*2,h:TILE,type:'solid'},
+        {x:1840,y:gh-TILE*4.5,w:TILE*2,h:TILE,type:'moving',dx:2.7,range:120},
+        {x:2160,y:gh-TILE*6,w:TILE*3,h:TILE,type:'solid'},
+        {x:2480,y:gh-TILE*4,w:TILE*2,h:TILE,type:'moving',dx:-2.5,range:160},
+        {x:2780,y:gh-TILE*7,w:TILE*2,h:TILE,type:'solid'},
+        {x:3080,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
+        {x:3400,y:gh-TILE*7,w:TILE*2,h:TILE,type:'moving',dx:3,range:130},
+        {x:3720,y:gh-TILE*4,w:TILE*2,h:TILE,type:'solid'},
+        {x:4020,y:gh-TILE*6,w:TILE*2,h:TILE,type:'moving',dx:-3.2,range:120},
+        {x:4320,y:gh-TILE*4.5,w:TILE*3,h:TILE,type:'solid'},
+        {x:4640,y:gh-TILE*7,w:TILE*2,h:TILE,type:'solid'},
+        {x:4980,y:gh-TILE*5,w:TILE*4,h:TILE,type:'solid'},
+      ],
+      enemies:[
+        {type:'bug',x:260,y:0,patrolLeft:220,patrolRight:430},
+        {type:'server',x:760,y:0},
+        {type:'bug',x:1320,y:0,patrolLeft:1260,patrolRight:1500},
+        {type:'server',x:1600,y:0},
+        {type:'bug',x:2200,y:0,patrolLeft:2160,patrolRight:2380},
+        {type:'server',x:2840,y:0},
+        {type:'bug',x:3140,y:0,patrolLeft:3080,patrolRight:3340},
+        {type:'server',x:3760,y:0},
+        {type:'bug',x:4360,y:0,patrolLeft:4320,patrolRight:4540},
+        {type:'server',x:5000,y:0},
+      ],
+      coins:[
+        {x:250,y:gh-TILE*5},{x:290,y:gh-TILE*5},{x:330,y:gh-TILE*5},
+        {x:500,y:gh-TILE*7},{x:530,y:gh-TILE*7},
+        {x:760,y:gh-TILE*6},{x:800,y:gh-TILE*6},
+        {x:1000,y:gh-TILE*8.5},{x:1040,y:gh-TILE*8.5},
+        {x:1280,y:gh-TILE*6.5},{x:1320,y:gh-TILE*6.5},
+        {x:2180,y:gh-TILE*8},{x:2220,y:gh-TILE*8},
+        {x:3120,y:gh-TILE*7.5},{x:3160,y:gh-TILE*7.5},
+        {x:4040,y:gh-TILE*8.5},{x:4080,y:gh-TILE*8.5},
+      ],
+      logs:[{x:740,y:gh-TILE*6},{x:2160,y:gh-TILE*8},{x:3400,y:gh-TILE*8},{x:5000,y:gh-TILE*7}],
+      debugTokens:[{x:1540,y:gh-TILE*9},{x:2780,y:gh-TILE*9},{x:4640,y:gh-TILE*9}],
+      goal:{x:5300,y:gh-TILE*2},
+    },
+
+    // ─── LEVEL 7: Quantum Lanes ───
+    {
+      name:'נתיבי קוואנטום',
+      bgColor:'#201133',
+      width:5900,
+      ground:{y:gh,h:TILE*2},
+      platforms:[
+        {x:210,y:gh-TILE*3,w:TILE*2,h:TILE,type:'solid'},
+        {x:420,y:gh-TILE*6,w:TILE*2,h:TILE,type:'moving',dx:3.3,range:90},
+        {x:640,y:gh-TILE*4,w:TILE*2,h:TILE,type:'solid'},
+        {x:860,y:gh-TILE*7,w:TILE*2,h:TILE,type:'moving',dx:-3,range:110},
+        {x:1080,y:gh-TILE*4.5,w:TILE*3,h:TILE,type:'solid'},
+        {x:1360,y:gh-TILE*7.5,w:TILE*2,h:TILE,type:'solid'},
+        {x:1640,y:gh-TILE*5,w:TILE*2,h:TILE,type:'moving',dx:3.5,range:120},
+        {x:1940,y:gh-TILE*7,w:TILE*2,h:TILE,type:'moving',dx:-3.2,range:100},
+        {x:2240,y:gh-TILE*4,w:TILE*3,h:TILE,type:'solid'},
+        {x:2560,y:gh-TILE*6.5,w:TILE*2,h:TILE,type:'moving',dx:3.7,range:140},
+        {x:2880,y:gh-TILE*4.5,w:TILE*3,h:TILE,type:'solid'},
+        {x:3200,y:gh-TILE*7,w:TILE*2,h:TILE,type:'moving',dx:-3.4,range:120},
+        {x:3520,y:gh-TILE*5,w:TILE*2,h:TILE,type:'solid'},
+        {x:3800,y:gh-TILE*8,w:TILE*2,h:TILE,type:'moving',dx:4,range:150},
+        {x:4120,y:gh-TILE*4.5,w:TILE*3,h:TILE,type:'solid'},
+        {x:4450,y:gh-TILE*7,w:TILE*2,h:TILE,type:'moving',dx:-3.3,range:100},
+        {x:4780,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
+        {x:5150,y:gh-TILE*7,w:TILE*2,h:TILE,type:'solid'},
+        {x:5450,y:gh-TILE*3,w:TILE*4,h:TILE,type:'solid'},
+      ],
+      enemies:[
+        {type:'bug',x:250,y:0,patrolLeft:210,patrolRight:380},
+        {type:'server',x:700,y:0},
+        {type:'bug',x:1120,y:0,patrolLeft:1080,patrolRight:1320},
+        {type:'server',x:1700,y:0},
+        {type:'bug',x:2300,y:0,patrolLeft:2240,patrolRight:2460},
+        {type:'server',x:2940,y:0},
+        {type:'bug',x:3560,y:0,patrolLeft:3520,patrolRight:3740},
+        {type:'server',x:4180,y:0},
+        {type:'bug',x:4820,y:0,patrolLeft:4780,patrolRight:5000},
+        {type:'server',x:5480,y:0},
+      ],
+      coins:[
+        {x:230,y:gh-TILE*5},{x:260,y:gh-TILE*5},
+        {x:440,y:gh-TILE*8},{x:470,y:gh-TILE*8},
+        {x:880,y:gh-TILE*9},{x:910,y:gh-TILE*9},
+        {x:1100,y:gh-TILE*6.5},{x:1140,y:gh-TILE*6.5},
+        {x:1660,y:gh-TILE*7.5},{x:1700,y:gh-TILE*7.5},
+        {x:2580,y:gh-TILE*9},{x:2620,y:gh-TILE*9},
+        {x:3820,y:gh-TILE*10},{x:3860,y:gh-TILE*10},
+        {x:5160,y:gh-TILE*9},{x:5200,y:gh-TILE*9},
+      ],
+      logs:[{x:1080,y:gh-TILE*6.5},{x:2240,y:gh-TILE*6},{x:3520,y:gh-TILE*7},{x:4780,y:gh-TILE*7}],
+      debugTokens:[{x:1360,y:gh-TILE*10},{x:3200,y:gh-TILE*10},{x:5150,y:gh-TILE*10}],
+      goal:{x:5700,y:gh-TILE*2},
+    },
+
+    // ─── LEVEL 8: Firewall Storm ───
+    {
+      name:'סערת Firewall',
+      bgColor:'#2a1008',
+      width:6200,
+      ground:{y:gh,h:TILE*2},
+      platforms:[
+        {x:220,y:gh-TILE*3,w:TILE*3,h:TILE,type:'solid'},
+        {x:520,y:gh-TILE*5.5,w:TILE*2,h:TILE,type:'moving',dx:3.1,range:120},
+        {x:820,y:gh-TILE*4,w:TILE*3,h:TILE,type:'solid'},
+        {x:1140,y:gh-TILE*7,w:TILE*2,h:TILE,type:'moving',dx:-3.4,range:100},
+        {x:1460,y:gh-TILE*4.5,w:TILE*2,h:TILE,type:'solid'},
+        {x:1760,y:gh-TILE*8,w:TILE*2,h:TILE,type:'moving',dx:3.6,range:130},
+        {x:2080,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
+        {x:2420,y:gh-TILE*7,w:TILE*2,h:TILE,type:'moving',dx:-3.5,range:120},
+        {x:2740,y:gh-TILE*4,w:TILE*3,h:TILE,type:'solid'},
+        {x:3060,y:gh-TILE*8,w:TILE*2,h:TILE,type:'moving',dx:3.8,range:150},
+        {x:3400,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
+        {x:3740,y:gh-TILE*7,w:TILE*2,h:TILE,type:'moving',dx:-3.2,range:110},
+        {x:4060,y:gh-TILE*4.5,w:TILE*2,h:TILE,type:'solid'},
+        {x:4360,y:gh-TILE*8,w:TILE*2,h:TILE,type:'moving',dx:4,range:120},
+        {x:4680,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
+        {x:5020,y:gh-TILE*7.5,w:TILE*2,h:TILE,type:'moving',dx:-3.6,range:100},
+        {x:5360,y:gh-TILE*4.5,w:TILE*3,h:TILE,type:'solid'},
+        {x:5700,y:gh-TILE*7,w:TILE*2,h:TILE,type:'solid'},
+        {x:5950,y:gh-TILE*3,w:TILE*4,h:TILE,type:'solid'},
+      ],
+      enemies:[
+        {type:'bug',x:280,y:0,patrolLeft:220,patrolRight:470},
+        {type:'server',x:880,y:0},
+        {type:'bug',x:1520,y:0,patrolLeft:1460,patrolRight:1700},
+        {type:'server',x:2140,y:0},
+        {type:'bug',x:2800,y:0,patrolLeft:2740,patrolRight:2980},
+        {type:'server',x:3460,y:0},
+        {type:'bug',x:4120,y:0,patrolLeft:4060,patrolRight:4300},
+        {type:'server',x:4740,y:0},
+        {type:'bug',x:5400,y:0,patrolLeft:5360,patrolRight:5580},
+        {type:'server',x:6000,y:0},
+      ],
+      coins:[
+        {x:240,y:gh-TILE*5},{x:280,y:gh-TILE*5},{x:320,y:gh-TILE*5},
+        {x:540,y:gh-TILE*8},{x:580,y:gh-TILE*8},
+        {x:1160,y:gh-TILE*9.5},{x:1200,y:gh-TILE*9.5},
+        {x:1780,y:gh-TILE*10},{x:1820,y:gh-TILE*10},
+        {x:2440,y:gh-TILE*9},{x:2480,y:gh-TILE*9},
+        {x:3080,y:gh-TILE*10.5},{x:3120,y:gh-TILE*10.5},
+        {x:4380,y:gh-TILE*10.5},{x:4420,y:gh-TILE*10.5},
+        {x:5720,y:gh-TILE*9},{x:5760,y:gh-TILE*9},
+      ],
+      logs:[{x:820,y:gh-TILE*6.5},{x:2080,y:gh-TILE*6.5},{x:3400,y:gh-TILE*6.5},{x:4680,y:gh-TILE*6.5}],
+      debugTokens:[{x:1760,y:gh-TILE*11},{x:3060,y:gh-TILE*11},{x:5020,y:gh-TILE*11}],
+      goal:{x:6100,y:gh-TILE*2},
+    },
+
+    // ─── LEVEL 9: Core Nexus ───
+    {
+      name:'ליבת הנקסוס',
+      bgColor:'#0e1f1f',
+      width:6600,
+      ground:{y:gh,h:TILE*2},
+      platforms:[
+        {x:240,y:gh-TILE*3,w:TILE*3,h:TILE,type:'solid'},
+        {x:560,y:gh-TILE*6,w:TILE*2,h:TILE,type:'moving',dx:3.4,range:120},
+        {x:860,y:gh-TILE*4,w:TILE*3,h:TILE,type:'solid'},
+        {x:1180,y:gh-TILE*7.5,w:TILE*2,h:TILE,type:'moving',dx:-3.5,range:110},
+        {x:1500,y:gh-TILE*5,w:TILE*2,h:TILE,type:'solid'},
+        {x:1820,y:gh-TILE*8,w:TILE*2,h:TILE,type:'moving',dx:3.7,range:130},
+        {x:2160,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
+        {x:2500,y:gh-TILE*8,w:TILE*2,h:TILE,type:'moving',dx:-3.6,range:120},
+        {x:2840,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
+        {x:3180,y:gh-TILE*8.5,w:TILE*2,h:TILE,type:'moving',dx:3.8,range:130},
+        {x:3520,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
+        {x:3860,y:gh-TILE*8,w:TILE*2,h:TILE,type:'moving',dx:-3.7,range:120},
+        {x:4200,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
+        {x:4540,y:gh-TILE*8.5,w:TILE*2,h:TILE,type:'moving',dx:4,range:130},
+        {x:4880,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
+        {x:5220,y:gh-TILE*8,w:TILE*2,h:TILE,type:'moving',dx:-3.8,range:100},
+        {x:5560,y:gh-TILE*5,w:TILE*3,h:TILE,type:'solid'},
+        {x:5900,y:gh-TILE*8,w:TILE*2,h:TILE,type:'solid'},
+        {x:6200,y:gh-TILE*4,w:TILE*4,h:TILE,type:'solid'},
+      ],
+      enemies:[
+        {type:'bug',x:300,y:0,patrolLeft:240,patrolRight:500},
+        {type:'server',x:920,y:0},
+        {type:'bug',x:1560,y:0,patrolLeft:1500,patrolRight:1740},
+        {type:'server',x:2220,y:0},
+        {type:'bug',x:2900,y:0,patrolLeft:2840,patrolRight:3080},
+        {type:'server',x:3580,y:0},
+        {type:'bug',x:4260,y:0,patrolLeft:4200,patrolRight:4440},
+        {type:'server',x:4940,y:0},
+        {type:'bug',x:5620,y:0,patrolLeft:5560,patrolRight:5780},
+        {type:'server',x:6260,y:0},
+      ],
+      coins:[
+        {x:260,y:gh-TILE*5},{x:300,y:gh-TILE*5},
+        {x:580,y:gh-TILE*8.5},{x:620,y:gh-TILE*8.5},
+        {x:1200,y:gh-TILE*10},{x:1240,y:gh-TILE*10},
+        {x:1840,y:gh-TILE*10.5},{x:1880,y:gh-TILE*10.5},
+        {x:2520,y:gh-TILE*10.5},{x:2560,y:gh-TILE*10.5},
+        {x:3200,y:gh-TILE*11},{x:3240,y:gh-TILE*11},
+        {x:4560,y:gh-TILE*11},{x:4600,y:gh-TILE*11},
+        {x:5920,y:gh-TILE*10},{x:5960,y:gh-TILE*10},
+      ],
+      logs:[{x:860,y:gh-TILE*6.5},{x:2160,y:gh-TILE*6.5},{x:3520,y:gh-TILE*6.5},{x:4880,y:gh-TILE*6.5}],
+      debugTokens:[{x:1820,y:gh-TILE*11.5},{x:3180,y:gh-TILE*11.5},{x:4540,y:gh-TILE*11.5},{x:5900,y:gh-TILE*11.5}],
+      goal:{x:6450,y:gh-TILE*2},
+    },
+
+    // ─── LEVEL 10: Omega Legacy ───
+    {
+      name:'אומגה Legacy',
+      bgColor:'#180909',
+      width:3800,
+      ground:{y:gh,h:TILE*2},
+      platforms:[
+        {x:220,y:gh-TILE*3,w:TILE*4,h:TILE,type:'solid'},
+        {x:540,y:gh-TILE*5.5,w:TILE*3,h:TILE,type:'solid'},
+        {x:900,y:gh-TILE*4,w:TILE*4,h:TILE,type:'solid'},
+        {x:1260,y:gh-TILE*6.5,w:TILE*3,h:TILE,type:'solid'},
+        {x:1600,y:gh-TILE*4.5,w:TILE*4,h:TILE,type:'solid'},
+        {x:1960,y:gh-TILE*7,w:TILE*3,h:TILE,type:'solid'},
+        {x:2300,y:gh-TILE*5,w:TILE*4,h:TILE,type:'solid'},
+        {x:2660,y:gh-TILE*7.5,w:TILE*3,h:TILE,type:'solid'},
+        {x:3000,y:gh-TILE*4,w:TILE*6,h:TILE,type:'solid'}, // final arena
+      ],
+      enemies:[
+        {type:'bug',x:270,y:0,patrolLeft:220,patrolRight:460},
+        {type:'server',x:620,y:0},
+        {type:'bug',x:980,y:0,patrolLeft:900,patrolRight:1180},
+        {type:'server',x:1320,y:0},
+        {type:'bug',x:1680,y:0,patrolLeft:1600,patrolRight:1880},
+        {type:'server',x:2040,y:0},
+        {type:'bug',x:2360,y:0,patrolLeft:2300,patrolRight:2540},
+        {type:'boss',x:3180,y:gh-TILE*10,hp:45}, // final boss
+      ],
+      coins:[
+        {x:260,y:gh-TILE*5.5},{x:300,y:gh-TILE*5.5},
+        {x:560,y:gh-TILE*8},{x:600,y:gh-TILE*8},
+        {x:920,y:gh-TILE*7},{x:960,y:gh-TILE*7},
+        {x:1280,y:gh-TILE*9.5},{x:1320,y:gh-TILE*9.5},
+        {x:1620,y:gh-TILE*7.5},{x:1660,y:gh-TILE*7.5},
+        {x:1980,y:gh-TILE*10},{x:2020,y:gh-TILE*10},
+        {x:2680,y:gh-TILE*10.5},{x:2720,y:gh-TILE*10.5},
+      ],
+      logs:[{x:560,y:gh-TILE*8},{x:1600,y:gh-TILE*7.5},{x:2660,y:gh-TILE*10.5}],
+      debugTokens:[{x:1260,y:gh-TILE*10.5},{x:2300,y:gh-TILE*10.5},{x:3000,y:gh-TILE*10}],
+      goal:{x:3520,y:gh-TILE*2},
     },
   ];
   return levels[(num-1)%levels.length];
@@ -1980,7 +2237,7 @@ const G = {
   state:'loading',
   level:1,
   maxUnlocked:1,
-  levelStars:[0,0,0,0,0],
+  levelStars:Array(TOTAL_LEVELS).fill(0),
   totalScore:0,
   player:null,
   platforms:[],
@@ -2149,10 +2406,13 @@ const G = {
     this.showOnly('levelScreen');
     this.maxUnlocked=parseInt(localStorage.getItem('mamramUnlocked')||'1');
     const grid=document.getElementById('levelGrid');
-    const names=['בסיס הממרם','מסלול הרכבות','מבוך הנתיבים','מסלול הברקים','מפגש עם Legacy'];
-    const stars=JSON.parse(localStorage.getItem('mamramStars')||'[0,0,0,0,0]');
+    const names=[
+      'בסיס הממרם','מסלול הרכבות','מבוך הנתיבים','מסלול הברקים','מבצר הרשע',
+      'מרכז הנתונים האפל','נתיבי קוואנטום','סערת Firewall','ליבת הנקסוס','אומגה Legacy'
+    ];
+    const stars=JSON.parse(localStorage.getItem('mamramStars')||JSON.stringify(Array(TOTAL_LEVELS).fill(0)));
     grid.innerHTML='';
-    for(let i=1;i<=5;i++){
+    for(let i=1;i<=TOTAL_LEVELS;i++){
       const unlocked=i<=this.maxUnlocked;
       const s=stars[i-1]||0;
       const card=document.createElement('div');
@@ -2267,7 +2527,7 @@ const G = {
 
   nextLevel(){
     this.hide('levelWinScreen');
-    if(this.level>=5){
+    if(this.level>=TOTAL_LEVELS){
       this.showWin();
     } else {
       this.startGame(this.level+1);
@@ -2299,7 +2559,7 @@ const G = {
   levelWin(){
     this.state='levelwin';
     const s=this.calcStars();
-    const stars=JSON.parse(localStorage.getItem('mamramStars')||'[0,0,0,0,0]');
+    const stars=JSON.parse(localStorage.getItem('mamramStars')||JSON.stringify(Array(TOTAL_LEVELS).fill(0)));
     if(s>stars[this.level-1]) stars[this.level-1]=s;
     localStorage.setItem('mamramStars',JSON.stringify(stars));
     const newUnlocked=Math.max(this.maxUnlocked,this.level+1);
@@ -2312,8 +2572,8 @@ const G = {
       `ניקוד: <span style="color:#ffcc00">${this.player.score}</span><br>
        מטבעות: <span style="color:#ffcc00">${this.player.coins}</span>`;
     document.getElementById('lwStars').textContent='★'.repeat(s)+'☆'.repeat(3-s);
-    document.getElementById('nextLevelBtn').style.display=this.level>=5?'none':'block';
-    if(this.level>=5) this.showWin();
+    document.getElementById('nextLevelBtn').style.display=this.level>=TOTAL_LEVELS?'none':'block';
+    if(this.level>=TOTAL_LEVELS) this.showWin();
   },
 
   calcStars(){

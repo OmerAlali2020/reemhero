@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>Reem Hero: המשחק הרשמי של ראם אללי</title>
+<title>ראם ביציאת מצרים: המשחק הרשמי של ראם אללי</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;700;900&display=swap');
 
   * { margin:0; padding:0; box-sizing:border-box; }
 
   body {
-    background: #0a0a1a;
+    background: #1a1206;
     overflow: hidden;
     font-family: 'Press Start 2P', monospace;
     touch-action: none;
@@ -42,7 +42,7 @@
 
   /* ─── SPLASH / TITLE ─── */
   #titleScreen {
-    background: #050d08;
+    background: #1a1206;
     overflow: hidden;
     flex-direction: column;
     align-items: stretch;
@@ -74,8 +74,8 @@
     align-items: center;
     justify-content: center;
     padding: 16px 12px;
-    border-right: 1px solid rgba(0,255,136,0.2);
-    background: rgba(0,20,10,0.3);
+    border-right: 1px solid rgba(255,201,74,0.3);
+    background: rgba(56,36,12,0.35);
     overflow: hidden;
   }
   .emblem-wrap {
@@ -90,7 +90,7 @@
   .unit-label {
     font-family: 'Orbitron', sans-serif;
     font-size: clamp(7px, 1.5vw, 11px);
-    color: #00ff88;
+    color: #f6c86b;
     letter-spacing: 3px;
     text-align: center;
     opacity: 0.8;
@@ -134,7 +134,7 @@
     font-family: 'Orbitron', sans-serif;
     font-size: clamp(22px, 4.8vw, 54px);
     font-weight: 900;
-    color: #00ff88;
+    color: #f7d38f;
     text-shadow:
       0 0 12px #00ff88,
       0 0 35px #00aa55,
@@ -568,7 +568,7 @@
 
 <!-- LOADING -->
 <div class="screen" id="loadingScreen">
-  <div class="loading-title">Reem The Hero</div>
+  <div class="loading-title">ראם ביציאת מצרים</div>
   <div class="loading-bar-bg"><div class="loading-bar-fill" id="loadBar"></div></div>
   <div class="loading-text" id="loadText">אתחול מערכת...</div>
 </div>
@@ -589,8 +589,8 @@
     <!-- RIGHT: title + menu -->
     <div class="title-right">
       <div class="title-logo">
-        <span class="title-mamra">Reem<br>Hero</span>
-        <span class="title-mario">The World Of Reem</span>
+        <span class="title-mamra">ראם<br>נגד מצרים</span>
+        <span class="title-mario">יציאת מצרים: המשחק</span>
         <div class="title-sub"> המשחק הרשמי של ראם אללי </div>
       </div>
       <div class="title-divider"></div>
@@ -607,7 +607,7 @@
 <div class="screen hidden" id="creditsScreen">
   <div class="credits-box">
     <div class="credits-title">📡 אודות המשחק</div>
-    <div class="credits-line"><span class="hl">Reem The Hero: המשחק של ראם</span></div>
+    <div class="credits-line"><span class="hl">ראם ביציאת מצרים: המשחק של ראם</span></div>
     <div class="credits-line">נוצר ע"י <span class="hl2">אבא וראם</span></div>
     <div class="credits-line">──────────────</div>
     <div class="credits-line">מוקדש לכל משפחת<span class="hl">אללי</span> ❤️</div>
@@ -623,7 +623,7 @@
 <!-- STORY -->
 <div class="screen hidden" id="storyScreen">
   <div class="story-panel">
-    <div class="story-title">📡 תקציר: מבצע פלישה</div>
+    <div class="story-title">📜 תקציר: יציאת מצרים</div>
     <div class="story-text" id="storyText"></div>
     <button class="menu-btn" style="margin-top:20px" onclick="G.startGame(1)">▶ לשטח!</button>
     <button class="menu-btn secondary" onclick="G.showTitle()">↩ חזור</button>
@@ -667,7 +667,7 @@
 
 <!-- BOSS HUD -->
 <div id="bossHud">
-  <div class="boss-name" id="bossName">Warrior</div>
+  <div class="boss-name" id="bossName">שומר מצרי</div>
   <div class="boss-bar-bg"><div class="boss-bar-fill" id="bossBar" style="width:100%"></div></div>
 </div>
 
@@ -778,25 +778,25 @@ window.addEventListener('resize', resizeCanvas);
 
 // ── Color Palette ──
 const C = {
-  sky1:'#0d1b2a', sky2:'#1a3a2a',
-  ground:'#2a4a2a', groundDark:'#1a3a1a',
-  platform:'#00aa55', platformDark:'#007733',
+  sky1:'#2c1b08', sky2:'#5f3a11',
+  ground:'#5c3b16', groundDark:'#3b260d',
+  platform:'#b88a3a', platformDark:'#8a6227',
   player:'#4a8a3a', playerDark:'#2a5a1a',
   helmet:'#667755',
   armor:'#334455',
   armorGlow:'#00ccff',
-  bug:'#cc2244', bugDark:'#881122',
-  server:'#334466', serverGlow:'#ff4444',
-  legacy:'#554433', legacyGlow:'#ff8800',
-  boss:'#882244', bossGlow:'#ff2244',
+  bug:'#a8822a', bugDark:'#6b4f16',
+  server:'#c9ab62', serverGlow:'#ffdf86',
+  legacy:'#6b4b23', legacyGlow:'#ffd36b',
+  boss:'#7e3a14', bossGlow:'#ffad52',
   coin:'#ffcc00', coinGlow:'#ffaa00',
-  bullet:'#00ffcc',
+  bullet:'#ffe28a',
   error:'#ff4444',
   chip:'#00ff88',
   log:'#ffaa44',
   debug:'#aa44ff',
   lava:'#ff3300',
-  water:'#0066ff',
+  water:'#3b76b8',
 };
 
 // ── Pixel Font Drawing ──
@@ -875,13 +875,13 @@ const Sprites = {
 
     // body shell gradient
     const bg=ctx.createRadialGradient(10*s,8*s,1,10*s,9*s,9*s);
-    bg.addColorStop(0,'#ee3355');
-    bg.addColorStop(0.6,'#aa1133');
-    bg.addColorStop(1,'#660011');
+    bg.addColorStop(0,'#4fc5d8');
+    bg.addColorStop(0.6,'#1c7188');
+    bg.addColorStop(1,'#0f3c4a');
     ctx.fillStyle=bg;
     ctx.beginPath();ctx.ellipse(10*s,10*s,9*s,7*s,0,0,Math.PI*2);ctx.fill();
     // shell sheen
-    ctx.fillStyle='rgba(255,150,170,0.18)';
+    ctx.fillStyle='rgba(255,230,150,0.22)';
     ctx.beginPath();ctx.ellipse(9*s,7*s,5*s,3*s,-0.3,0,Math.PI*2);ctx.fill();
     // wing split
     ctx.strokeStyle='#660011';ctx.lineWidth=1*s;
@@ -893,29 +893,29 @@ const Sprites = {
 
     // head
     const hbg=ctx.createRadialGradient(10*s,4*s,0,10*s,4*s,5*s);
-    hbg.addColorStop(0,'#cc1144');
-    hbg.addColorStop(1,'#880022');
+    hbg.addColorStop(0,'#f3d46d');
+    hbg.addColorStop(1,'#b48729');
     ctx.fillStyle=hbg;
     ctx.beginPath();ctx.arc(10*s,4*s,4.5*s,0,Math.PI*2);ctx.fill();
 
     // antennae
-    ctx.strokeStyle='#880022';ctx.lineWidth=1*s;
+    ctx.strokeStyle='#8a6a24';ctx.lineWidth=1*s;
     ctx.beginPath();ctx.moveTo(8*s,1*s);ctx.quadraticCurveTo(4*s,-3*s,3*s,-4*s);ctx.stroke();
     ctx.beginPath();ctx.moveTo(12*s,1*s);ctx.quadraticCurveTo(16*s,-3*s,17*s,-4*s);ctx.stroke();
-    ctx.fillStyle='#ff2244';
+    ctx.fillStyle='#ffd36b';
     ctx.beginPath();ctx.arc(3*s,-4*s,1.5*s,0,Math.PI*2);ctx.fill();
     ctx.beginPath();ctx.arc(17*s,-4*s,1.5*s,0,Math.PI*2);ctx.fill();
 
     // glowing eyes
     const eyeP=0.7+Math.sin(frame*.18)*.3;
     const eg=ctx.createRadialGradient(8*s,4*s,0,8*s,4*s,2.5*s);
-    eg.addColorStop(0,'rgba(255,80,80,'+eyeP+')');
-    eg.addColorStop(1,'rgba(200,0,0,0)');
+    eg.addColorStop(0,'rgba(255,220,120,'+eyeP+')');
+    eg.addColorStop(1,'rgba(150,90,0,0)');
     ctx.fillStyle=eg;
     ctx.beginPath();ctx.arc(8*s,4*s,3*s,0,Math.PI*2);ctx.fill();
     const eg2=ctx.createRadialGradient(12*s,4*s,0,12*s,4*s,2.5*s);
-    eg2.addColorStop(0,'rgba(255,80,80,'+eyeP+')');
-    eg2.addColorStop(1,'rgba(200,0,0,0)');
+    eg2.addColorStop(0,'rgba(255,220,120,'+eyeP+')');
+    eg2.addColorStop(1,'rgba(150,90,0,0)');
     ctx.fillStyle=eg2;
     ctx.beginPath();ctx.arc(12*s,4*s,3*s,0,Math.PI*2);ctx.fill();
     // pupils
@@ -940,12 +940,12 @@ const Sprites = {
 
     // main body
     const bg=ctx.createLinearGradient(0,0,0,h);
-    bg.addColorStop(0,'#3a4a66');
-    bg.addColorStop(1,'#1a2233');
+    bg.addColorStop(0,'#d5bd84');
+    bg.addColorStop(1,'#8d6635');
     ctx.fillStyle=bg;
     ctx.beginPath();ctx.roundRect(1*s,0,26*s,h,2*s);ctx.fill();
     // body edge highlight
-    ctx.strokeStyle='#4a5577';ctx.lineWidth=1*s;
+    ctx.strokeStyle='#6f4e26';ctx.lineWidth=1*s;
     ctx.beginPath();ctx.roundRect(1*s,0,26*s,h,2*s);ctx.stroke();
 
     // rack units
@@ -966,21 +966,21 @@ const Sprites = {
       ctx.fillStyle='rgba(100,150,200,0.15)';
       ctx.fillRect(5*s,ry+2*s,4*s,1.5*s);
     }
-    // error LEDs - blinking red
+    // eye-gems glow
     const blink=Math.sin(frame*.3)>0;
     for(let i=0;i<4;i++){
       const ry=i*10*s+2*s;
       const lg=ctx.createRadialGradient(23*s,ry+4*s,0,23*s,ry+4*s,2.5*s);
-      lg.addColorStop(0,blink?'rgba(255,60,60,1)':'rgba(80,0,0,1)');
+      lg.addColorStop(0,blink?'rgba(255,220,120,1)':'rgba(90,45,0,1)');
       lg.addColorStop(1,'rgba(0,0,0,0)');
       ctx.fillStyle=lg;
       ctx.beginPath();ctx.arc(23*s,ry+4*s,2.5*s,0,Math.PI*2);ctx.fill();
     }
-    // error text label
-    ctx.fillStyle='rgba(255,80,80,0.7)';
+    // glyph text label
+    ctx.fillStyle='rgba(255,235,170,0.8)';
     ctx.font=`bold ${5*s}px monospace`;
     ctx.textAlign='center';
-    ctx.fillText('ERR',14*s,h-2*s);
+    ctx.fillText('𓂀',14*s,h-2*s);
     // top vent lines
     ctx.strokeStyle='rgba(255,255,255,0.08)';ctx.lineWidth=0.5*s;
     for(let i=0;i<5;i++){
@@ -1151,15 +1151,15 @@ const Sprites = {
     const px=Math.round(x),py=Math.round(y);
     // main body gradient
     const g=ctx.createLinearGradient(0,py,0,py+h);
-    g.addColorStop(0,'#2a5a20');
-    g.addColorStop(0.35,'#1e4818');
-    g.addColorStop(1,'#0f2a08');
+    g.addColorStop(0,'#d7b26f');
+    g.addColorStop(0.35,'#b88945');
+    g.addColorStop(1,'#7a5627');
     ctx.fillStyle=g;
     ctx.beginPath();ctx.roundRect(px,py,w,h,2);ctx.fill();
-    // bright top grass strip
+    // top sandstone strip
     const tg=ctx.createLinearGradient(0,py,0,py+9);
-    tg.addColorStop(0,'#55dd44');
-    tg.addColorStop(1,'#2a8a22');
+    tg.addColorStop(0,'#f0d7a0');
+    tg.addColorStop(1,'#c49a5b');
     ctx.fillStyle=tg;
     ctx.fillRect(px,py,w,9);
     // top sheen
@@ -1186,12 +1186,12 @@ const Sprites = {
   movingPlatform(x,y,w,h){
     const px=Math.round(x),py=Math.round(y);
     const g=ctx.createLinearGradient(0,py,0,py+h);
-    g.addColorStop(0,'#1a6a9a');
-    g.addColorStop(1,'#0d3355');
+    g.addColorStop(0,'#d9be83');
+    g.addColorStop(1,'#8a6331');
     ctx.fillStyle=g;
     ctx.beginPath();ctx.roundRect(px,py,w,h,3);ctx.fill();
-    // neon top strip
-    ctx.fillStyle='#00ccff';
+    // golden top strip
+    ctx.fillStyle='#f6ce7c';
     ctx.fillRect(px,py,w,3);
     // inner glow tint
     ctx.fillStyle='rgba(0,200,255,0.08)';
@@ -1221,11 +1221,11 @@ const Sprites = {
     const camX=G.cam.x;
 
     const themes=[
-      {sky1:'#060d18',sky2:'#0d1f2e',acc:'#00ff88',acc2:'#00ccff'},  // base
-      {sky1:'#0d0619',sky2:'#1a0d2e',acc:'#aa44ff',acc2:'#ff44aa'},  // purple
-      {sky1:'#020d16',sky2:'#061a26',acc:'#00ccff',acc2:'#0044ff'},  // deep blue
-      {sky1:'#1a0800',sky2:'#2e1000',acc:'#ff6600',acc2:'#ffcc00'},  // fire
-      {sky1:'#160004',sky2:'#2e0008',acc:'#ff2244',acc2:'#ff8800'},  // boss red
+      {sky1:'#2a1806',sky2:'#6f4a1b',acc:'#f0c16b',acc2:'#ffe3a6'},
+      {sky1:'#1d1205',sky2:'#4a2d0f',acc:'#d5a85a',acc2:'#f7d287'},
+      {sky1:'#2b1a08',sky2:'#875622',acc:'#f7ca77',acc2:'#fff2bf'},
+      {sky1:'#1b1207',sky2:'#6f3f18',acc:'#ffb866',acc2:'#ffe0a1'},
+      {sky1:'#261406',sky2:'#5a2b10',acc:'#ff9f4a',acc2:'#ffd27a'},
     ];
     const th=themes[(levelNum-1)%themes.length];
 
@@ -1237,61 +1237,51 @@ const Sprites = {
     ctx.fillStyle=grd;
     ctx.fillRect(0,0,W,H);
 
-    // Stars (parallax layer 0)
-    ctx.fillStyle=th.acc+'44';
-    for(let i=0;i<60;i++){
-      const sx=((i*137+i*i*31)%W);
-      const sy=((i*97+i*53)%(H*.55));
-      const blink=0.3+0.7*Math.abs(Math.sin(t*.02+i));
-      ctx.globalAlpha=blink;
-      ctx.beginPath();ctx.arc(sx,sy,i%3===0?1.5:0.8,0,Math.PI*2);ctx.fill();
+    // Sand dust
+    ctx.fillStyle=th.acc+'35';
+    for(let i=0;i<70;i++){
+      const sx=(i*131 + t*0.6 + camX*0.05)%W;
+      const sy=((i*79+i*17)%(H*.7));
+      const r=(i%3)+0.6;
+      ctx.globalAlpha=0.15+Math.abs(Math.sin((t+i)*0.02))*0.25;
+      ctx.beginPath();ctx.arc(sx,sy,r,0,Math.PI*2);ctx.fill();
     }
     ctx.globalAlpha=1;
 
-    // Distant city silhouette (parallax layer 1 — very slow)
-    const parallax1 = camX * 0.05;
-    ctx.fillStyle=th.acc+'18';
-    for(let i=0;i<30;i++){
-      const bx=((i*180-parallax1%180+W)%W);
-      const bh=30+((i*73)%60);
-      const bw=20+((i*41)%30);
-      ctx.fillRect(bx,H*.65-bh,bw,bh);
-      // windows
-      ctx.fillStyle=th.acc2+'22';
-      for(let wy=4;wy<bh-4;wy+=8){
-        for(let wx=3;wx<bw-3;wx+=7){
-          if((i+wy+wx)%3!==0) ctx.fillRect(bx+wx,H*.65-bh+wy,4,4);
-        }
-      }
-      ctx.fillStyle=th.acc+'18';
+    // Pyramids (parallax)
+    const drawPyramid=(x,baseW,h,color,shade)=>{
+      const y=H*.78;
+      ctx.fillStyle=color;
+      ctx.beginPath();
+      ctx.moveTo(x,y);
+      ctx.lineTo(x+baseW*.5,y-h);
+      ctx.lineTo(x+baseW,y);
+      ctx.closePath();
+      ctx.fill();
+      ctx.fillStyle=shade;
+      ctx.beginPath();
+      ctx.moveTo(x+baseW*.5,y-h);
+      ctx.lineTo(x+baseW,y);
+      ctx.lineTo(x+baseW*.7,y);
+      ctx.closePath();
+      ctx.fill();
+    };
+    const p1 = camX * 0.08;
+    for(let i=0;i<7;i++){
+      const px=((i*280 - p1 + W*2)%(W+320))-120;
+      drawPyramid(px,160,100+(i%3)*24,th.acc+'55',th.acc2+'33');
     }
 
-    // Mid-ground structures (parallax layer 2)
-    const parallax2 = camX * 0.15;
-    ctx.fillStyle=th.acc+'10';
-    for(let i=0;i<20;i++){
-      const bx=((i*220+40-parallax2%220+W*2)%(W+220))-40;
-      const bh=50+((i*89)%80);
-      const bw=30+((i*53)%40);
-      ctx.fillRect(bx,H*.75-bh,bw,bh);
-      // antenna
-      ctx.fillStyle=th.acc+'30';
-      ctx.fillRect(bx+bw*.5-1,H*.75-bh-12,2,12);
-      // blinking light on antenna
-      if(Math.sin(t*.05+i)>0) {
-        ctx.fillStyle=th.acc2+'80';
-        ctx.beginPath();ctx.arc(bx+bw*.5,H*.75-bh-13,2,0,Math.PI*2);ctx.fill();
-      }
-      ctx.fillStyle=th.acc+'10';
-    }
-
-    // Subtle grid lines (circuit board feel)
-    ctx.strokeStyle=th.acc+'08'; ctx.lineWidth=1;
-    for(let gx=0;gx<W;gx+=TILE){
-      ctx.beginPath();ctx.moveTo(gx,0);ctx.lineTo(gx,H);ctx.stroke();
-    }
-    for(let gy=0;gy<H;gy+=TILE){
-      ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();
+    // Egyptian columns
+    const p2 = camX * 0.18;
+    for(let i=0;i<12;i++){
+      const cx=((i*170 - p2 + W*2)%(W+220))-60;
+      const ch=70+((i*37)%30);
+      const top=H*.82-ch;
+      ctx.fillStyle=th.acc+'38';
+      ctx.fillRect(cx,top,16,ch);
+      ctx.fillStyle=th.acc2+'55';
+      ctx.fillRect(cx-2,top-6,20,8);
     }
 
     // Ground glow line
@@ -1369,7 +1359,7 @@ function buildLevel(num){
   const levels=[
     // ─── LEVEL 1: Tutorial Base ───
     {
-      name:'בסיס האם',
+      name:'שער הנילוס',
       bgColor:'#0d1b2a',
       width:4000,
       ground:{y:gh,h:TILE*2},
@@ -1440,7 +1430,7 @@ function buildLevel(num){
 
     // ─── LEVEL 2: Moving Platforms ───
     {
-      name:'מסלול הרכבות',
+      name:'מחנה הפירמידות',
       bgColor:'#1a0d2a',
       width:4500,
       ground:{y:gh,h:TILE*2},
@@ -1484,7 +1474,7 @@ function buildLevel(num){
 
     // ─── LEVEL 3: Complex ───
     {
-      name:'מבוך הנתיבים',
+      name:'מבוך האובליסקים',
       bgColor:'#0a1a2a',
       width:5000,
       ground:{y:gh,h:TILE*2},
@@ -1539,7 +1529,7 @@ function buildLevel(num){
 
     // ─── LEVEL 4: High Speed ───
     {
-      name:'מסלול הברקים',
+      name:'נתיב הספינקס',
       bgColor:'#2a1a0a',
       width:5400,
       ground:{y:gh,h:TILE*2},
@@ -1596,7 +1586,7 @@ function buildLevel(num){
 
     // ─── LEVEL 5: Pre-Final Gauntlet ───
     {
-      name:'מבצר הרשע',
+      name:'שומרי אנוביס',
       bgColor:'#1a0a0a',
       width:3000,
       ground:{y:gh,h:TILE*2},
@@ -1633,7 +1623,7 @@ function buildLevel(num){
 
     // ─── LEVEL 6: Dark Data Center ───
     {
-      name:'מרכז הנתונים האפל',
+      name:'ארמון פרעה',
       bgColor:'#10162b',
       width:5600,
       ground:{y:gh,h:TILE*2},
@@ -1685,7 +1675,7 @@ function buildLevel(num){
 
     // ─── LEVEL 7: Quantum Lanes ───
     {
-      name:'נתיבי קוואנטום',
+      name:'מקדש החול',
       bgColor:'#201133',
       width:5900,
       ground:{y:gh,h:TILE*2},
@@ -1739,7 +1729,7 @@ function buildLevel(num){
 
     // ─── LEVEL 8: Firewall Storm ───
     {
-      name:'סערת Firewall',
+      name:'סערת המדבר',
       bgColor:'#2a1008',
       width:6200,
       ground:{y:gh,h:TILE*2},
@@ -1793,7 +1783,7 @@ function buildLevel(num){
 
     // ─── LEVEL 9: Core Nexus ───
     {
-      name:'ליבת הנקסוס',
+      name:'ליבת הפירמידה',
       bgColor:'#0e1f1f',
       width:6600,
       ground:{y:gh,h:TILE*2},
@@ -1847,7 +1837,7 @@ function buildLevel(num){
 
     // ─── LEVEL 10: Omega Legacy ───
     {
-      name:'אומגה Legacy',
+      name:'אומגה פרעה',
       bgColor:'#180909',
       width:3800,
       ground:{y:gh,h:TILE*2},
@@ -1888,7 +1878,7 @@ function buildLevel(num){
 
     // ─── LEVEL 6: Dark Data Center ───
     {
-      name:'מרכז הנתונים האפל',
+      name:'ארמון פרעה',
       bgColor:'#10162b',
       width:5600,
       ground:{y:gh,h:TILE*2},
@@ -1940,7 +1930,7 @@ function buildLevel(num){
 
     // ─── LEVEL 7: Quantum Lanes ───
     {
-      name:'נתיבי קוואנטום',
+      name:'מקדש החול',
       bgColor:'#201133',
       width:5900,
       ground:{y:gh,h:TILE*2},
@@ -1994,7 +1984,7 @@ function buildLevel(num){
 
     // ─── LEVEL 8: Firewall Storm ───
     {
-      name:'סערת Firewall',
+      name:'סערת המדבר',
       bgColor:'#2a1008',
       width:6200,
       ground:{y:gh,h:TILE*2},
@@ -2048,7 +2038,7 @@ function buildLevel(num){
 
     // ─── LEVEL 9: Core Nexus ───
     {
-      name:'ליבת הנקסוס',
+      name:'ליבת הפירמידה',
       bgColor:'#0e1f1f',
       width:6600,
       ground:{y:gh,h:TILE*2},
@@ -2102,7 +2092,7 @@ function buildLevel(num){
 
     // ─── LEVEL 10: Omega Legacy ───
     {
-      name:'אומגה Legacy',
+      name:'אומגה פרעה',
       bgColor:'#180909',
       width:3800,
       ground:{y:gh,h:TILE*2},
@@ -2625,17 +2615,17 @@ const G = {
     const c = bc.getContext('2d');
     const cols = Math.floor(bc.width / 18);
     const drops = Array(cols).fill(0).map(()=>Math.random()*50|0);
-    const chars = 'アイウエオカキクケコ01アBUGERROR10MAMRAM01'.split('');
+    const chars = '𓀀𓁐𓂀𓃭𓄿𓇳0123456789ראםמצרים'.split('');
     let running = true;
     const rain = setInterval(()=>{
       if(this.state !== 'title'){ clearInterval(rain); return; }
-      c.fillStyle = 'rgba(0,8,3,0.18)';
+      c.fillStyle = 'rgba(28,18,8,0.2)';
       c.fillRect(0,0,bc.width,bc.height);
       c.font = '13px monospace';
       for(let i=0;i<cols;i++){
         const ch = chars[Math.random()*chars.length|0];
         const x = i*18, y = drops[i]*18;
-        c.fillStyle = drops[i]%4===0 ? '#aaffcc' : '#00ff88';
+        c.fillStyle = drops[i]%4===0 ? '#ffe3a6' : '#f2c46d';
         c.globalAlpha = 0.5 + Math.random()*0.4;
         c.fillText(ch,x,y);
         c.globalAlpha = 1;
@@ -2648,11 +2638,11 @@ const G = {
   startStory(){
     this.showOnly('storyScreen');
     const lines = [
-  `שנת <span class="highlight">2025</span>. <span class="mamram">ראם</span> - הילד עם כוחות העל שנועד להגן על כולנו.`,
-  `צבא הרוע של ה-<span class="highlight">כוח הרשע</span> הקוסמי פלש לכדור הארץ.`,
-  `<span class="highlight">מפלצות</span> ענקיות זורעות הרס. ערים קורסות. כדור הארץ בסכנה!`,
-  `<span class="mamram">ראם</span> - מגן כדור הארץ - מזנק לפעולה עם כוחותיו העוצמתיים.`,
-  `משימה: <span class="highlight">השמד את המפלצות, הכנע את כוח הרשע והצל את העולם!</span>`,
+  `<span class="highlight">מצרים העתיקה.</span> בני ישראל תחת עול קשה, והלבבות זועקים לחירות.`,
+  `<span class="mamram">ראם</span> יוצא למשימה היסטורית: לעמוד מול פרעה ולהוביל את העם אל החופש.`,
+  `בדרך ממתינות לו <span class="highlight">מפלצות מיתולוגיות מצריות</span>, שומרים עתיקים וקסמים אפלים.`,
+  `<span class="mamram">ראם</span> צריך להמשיך קדימה, להביס את האויבים ולשמור על אומץ.`,
+  `משימה: <span class="highlight">הבא את היציאה ממצרים והובל את בני ישראל לחירות!</span>`,
 ];
     document.getElementById('storyText').innerHTML=lines.join('<br><br>');
   },
@@ -2662,8 +2652,8 @@ const G = {
     this.maxUnlocked=parseInt(localStorage.getItem('mamramUnlocked')||'1');
     const grid=document.getElementById('levelGrid');
     const names=[
-      'בסיס הממרם','מסלול הרכבות','מבוך הנתיבים','מסלול הברקים','מפגש עם Legacy',
-      'מרכז הנתונים האפל','נתיבי קוואנטום','סערת Firewall','ליבת הנקסוס','אומגה Legacy'
+      'שער הנילוס','מחנה הפירמידות','מבוך האובליסקים','נתיב הספינקס','שומרי אנוביס',
+      'ארמון פרעה','מקדש החול','סערת המדבר','ליבת הפירמידה','אומגה פרעה'
     ];
     const stars=JSON.parse(localStorage.getItem('mamramStars')||JSON.stringify(Array(TOTAL_LEVELS).fill(0)));
     grid.innerHTML='';
@@ -2972,7 +2962,7 @@ const G = {
         const bh=e.hp/e.maxHp*100;
         document.getElementById('bossBar').style.width=bh+'%';
         document.getElementById('bossName').textContent=
-          `⚠ LEGACY SYSTEM — PHASE ${e.hp<=Math.ceil(e.maxHp*.25)?'III':e.hp<=Math.ceil(e.maxHp*.5)?'II':'I'}`;
+          `⚠ פרעה האפל — שלב ${e.hp<=Math.ceil(e.maxHp*.25)?'III':e.hp<=Math.ceil(e.maxHp*.5)?'II':'I'}`;
       }
     }
 

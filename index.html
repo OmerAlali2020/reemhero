@@ -942,37 +942,73 @@ const Sprites = {
     ctx.save();
     if(dir<0){ctx.translate(w,0);ctx.scale(-1,1);}
     const shieldX = mode==='shieldSlide' ? 2*s : 0;
-    const bodyX = mode==='shield' || mode==='shieldSlide' ? 11*s : 8*s;
-    const bodyW = mode==='shield' || mode==='shieldSlide' ? 14*s : 16*s;
+    const hasShield = mode==='shield' || mode==='shieldSlide';
+    const bodyX = hasShield ? 10*s : 8*s;
+    const bodyW = hasShield ? 14*s : 16*s;
+    const step = Math.sin(frame*0.28)*1.8*s;
 
-    // robe/body
+    // legs
+    ctx.fillStyle='#3f2813';
+    ctx.fillRect(bodyX+1.6*s,31*s+step,4*s,7*s);
+    ctx.fillRect(bodyX+bodyW-5.6*s,31*s-step,4*s,7*s);
+    ctx.fillStyle='#6f4a20';
+    ctx.fillRect(bodyX+1.2*s,37*s+step,5*s,2*s);
+    ctx.fillRect(bodyX+bodyW-6.2*s,37*s-step,5*s,2*s);
+
+    // tunic/body
     const rg=ctx.createLinearGradient(0,0,0,h);
-    rg.addColorStop(0,'#f1deb0');
-    rg.addColorStop(1,'#b88a49');
+    rg.addColorStop(0,'#dcc49a');
+    rg.addColorStop(1,'#8a6233');
     ctx.fillStyle=rg;
-    ctx.beginPath();ctx.roundRect(bodyX,8*s,bodyW,30*s,3*s);ctx.fill();
-    // blue sash
-    ctx.fillStyle='#175c7a';
-    ctx.fillRect(bodyX+bodyW*.45,9*s,3*s,27*s);
+    ctx.beginPath();ctx.roundRect(bodyX,10*s,bodyW,22*s,2.8*s);ctx.fill();
+    ctx.fillStyle='#1d5d52';
+    ctx.fillRect(bodyX+bodyW*.42,10*s,3*s,22*s);
+    // chest amulet
+    ctx.fillStyle='#d8b25a';
+    ctx.beginPath();ctx.arc(bodyX+bodyW*0.5,16*s,2.2*s,0,Math.PI*2);ctx.fill();
 
-    // head + nemes
-    ctx.fillStyle='#f6c88d';
-    ctx.beginPath();ctx.arc(16*s,6*s,4*s,0,Math.PI*2);ctx.fill();
-    ctx.fillStyle='#1f3f68';
-    ctx.fillRect(11*s,2*s,10*s,3*s);
-    ctx.fillRect(10*s,4*s,2*s,8*s);
-    ctx.fillRect(20*s,4*s,2*s,8*s);
+    // arms
+    ctx.fillStyle='#7a5128';
+    ctx.fillRect(bodyX-2*s,14*s,3*s,11*s);
+    ctx.fillRect(bodyX+bodyW-1*s,15*s,3*s,11*s);
 
-    // circular shield
-    const sh=ctx.createRadialGradient(8*s+shieldX,20*s,2*s,8*s+shieldX,20*s,10*s);
-    sh.addColorStop(0,'#d9bf79');
-    sh.addColorStop(1,'#7a5720');
-    ctx.fillStyle=sh;
-    ctx.beginPath();ctx.arc(8*s+shieldX,20*s,8*s,0,Math.PI*2);ctx.fill();
-    ctx.strokeStyle='#4e3512';ctx.lineWidth=1.4*s;
-    ctx.beginPath();ctx.arc(8*s+shieldX,20*s,8*s,0,Math.PI*2);ctx.stroke();
-    ctx.fillStyle='rgba(255,255,255,0.35)';
-    ctx.beginPath();ctx.arc(5*s+shieldX,17*s,2*s,0,Math.PI*2);ctx.fill();
+    // spear
+    ctx.strokeStyle='#b58f50';ctx.lineWidth=1.1*s;
+    ctx.beginPath();
+    ctx.moveTo(bodyX+bodyW+3*s,8*s);
+    ctx.lineTo(bodyX+bodyW+3*s,34*s);
+    ctx.stroke();
+    ctx.fillStyle='#d8cdb7';
+    ctx.beginPath();
+    ctx.moveTo(bodyX+bodyW+3*s,6*s);
+    ctx.lineTo(bodyX+bodyW+1.8*s,9*s);
+    ctx.lineTo(bodyX+bodyW+4.2*s,9*s);
+    ctx.closePath();
+    ctx.fill();
+
+    // head + hood
+    ctx.fillStyle='#f1bd86';
+    ctx.beginPath();ctx.arc(16*s,7.2*s,3.6*s,0,Math.PI*2);ctx.fill();
+    ctx.fillStyle='#efe3cb';
+    ctx.fillRect(11*s,2.6*s,10*s,3*s);
+    ctx.fillRect(10*s,5*s,2*s,8*s);
+    ctx.fillRect(20*s,5*s,2*s,8*s);
+    // eye
+    ctx.fillStyle='#23170d';
+    ctx.fillRect(15.5*s,7*s,1.8*s,1.1*s);
+
+    // circular shield (defensive mode)
+    if(hasShield){
+      const sh=ctx.createRadialGradient(8*s+shieldX,21*s,2*s,8*s+shieldX,21*s,9*s);
+      sh.addColorStop(0,'#d9bf79');
+      sh.addColorStop(1,'#6c4b1d');
+      ctx.fillStyle=sh;
+      ctx.beginPath();ctx.arc(8*s+shieldX,21*s,7.5*s,0,Math.PI*2);ctx.fill();
+      ctx.strokeStyle='#452d10';ctx.lineWidth=1.3*s;
+      ctx.beginPath();ctx.arc(8*s+shieldX,21*s,7.5*s,0,Math.PI*2);ctx.stroke();
+      ctx.fillStyle='rgba(255,255,255,0.35)';
+      ctx.beginPath();ctx.arc(5.5*s+shieldX,18.5*s,1.8*s,0,Math.PI*2);ctx.fill();
+    }
     ctx.restore();
 
     ctx.restore();
